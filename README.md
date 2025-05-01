@@ -3,7 +3,7 @@
 Es un framework (un conjunto de herramientas y librerías) para Node.js que facilita la creación de aplicaciones web y APIs (interfaces de programación de aplicaciones).  
 Node.js por sí solo te permite ejecutar JavaScript en el servidor, pero trabajar directamente con él puede ser muy manual y tedioso (por ejemplo, se tendria que programar a mano cómo responder a cada solicitud HTTP).  
 
-![Gráfico explicativo](img/grafico1.png)
+![Gráfico explicativo](img/Grafico1.png)
 
 ## Instalación de Express Framework
 
