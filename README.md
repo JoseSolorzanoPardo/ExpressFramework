@@ -40,7 +40,7 @@ const app = express();
 
 # Ejercicio Sencillo
 
-![Gráfico explicativo](img/grafico2.png)
+![Gráfico explicativo](img/Grafico2.png)
 
 - Creamos un archivo index.js e involucramos a Express.
 - Le decimos que cuando alguien visite la ruta '/' (inicio), responda con '¡Hola Mundo!'.
@@ -52,11 +52,11 @@ Ahora bien, el despliegue inicial de este proyecto tiene un problema dado que al
 - npm install -g nodemon
 - nodemon index.js
 
-![Gráfico explicativo](img/grafico3.png)
+![Gráfico explicativo](img/Grafico3.png)
 
 ## ¿Qué es una "ruta" en Express?
 
-![Gráfico explicativo](img/grafico4.png)
+![Gráfico explicativo](img/Grafico4.png)
 
 Una ruta es un camino de acceso al servidor. Cuando un navegador o cliente hace una petición a tu servidor (por ejemplo, entra a <http://localhost:3000/>), el desarrollador define qué debe responder mediante el servidor en función de la URL y del método HTTP (GET, POST, PUT, DELETE, etc.).
 
@@ -66,7 +66,7 @@ Una ruta en Express combina:
 - Un método HTTP (por ejemplo: GET, POST).
 - Una función que maneja la solicitud y da una respuesta.
 
-![Gráfico explicativo](img/grafico5.png)
+![Gráfico explicativo](img/Grafico5.png)
 
 ## ¿Qué es una petición POST?
 
@@ -74,11 +74,11 @@ Una ruta en Express combina:
 - Generalmente, se usa para crear nuevos recursos (como crear un nuevo usuario, producto, pedido, etc.).
 - En Express, puedes capturar los datos enviados desde el cliente (por ejemplo, de un formulario HTML o de una API frontend como React).
 
-![Gráfico explicativo](img/grafico6.png)
+![Gráfico explicativo](img/Grafico6.png)
 
 Se declara la estructura de la petición POST por ejemplo de la siguiente forma (\`\` alt+96):
 
-![Gráfico explicativo](img/grafico7.png)
+![Gráfico explicativo](img/Grafico7.png)
 
 ## JSON
 
@@ -91,7 +91,7 @@ JSON significa JavaScript Object Notation. Es un formato de texto que se usa par
 - Para almacenar configuraciones (por ejemplo, package.json en proyectos de Node.js).
 - Para guardar información en bases de datos modernas (como MongoDB).
 
-![Gráfico explicativo](img/grafico8.png)
+![Gráfico explicativo](img/Grafico8.png)
 
 Como vamos a enviar una trama en formato JSON lo haremos con POSTMAN
 
@@ -103,22 +103,22 @@ Como vamos a enviar una trama en formato JSON lo haremos con POSTMAN
 
 }
 
-![Gráfico explicativo](img/grafico9.png)
+![Gráfico explicativo](img/Grafico9.png)
 
 Ajustando nuestro código:
 
-![Gráfico explicativo](img/grafico10.png)
+![Gráfico explicativo](img/Grafico10.png)
 
 # **¿Qué es una petición tipo PUT ?**
 
 - Una petición PUT se usa principalmente para ACTUALIZAR información existente en un servidor.
 - A veces también se usa para crear un recurso si no existe (pero su uso más típico es actualizar).
 
-![Gráfico explicativo](img/grafico11.png)
+![Gráfico explicativo](img/Grafico11.png)
 
 Emulando el ejercicio en Postman:  
 
-![Gráfico explicativo](img/grafico12.png)
+![Gráfico explicativo](img/Grafico12.png)
 
 ## ¿Qué es un Middleware?
 
@@ -132,7 +132,7 @@ Un middleware puede:
 - Redirigir a otro lugar.
 - Pasar el control a otro middleware.
 
-![Gráfico explicativo](img/grafico13.png)
+![Gráfico explicativo](img/Grafico13.png)
 
 ## Middleware para Autenticación
 
@@ -162,7 +162,7 @@ Un header (cabecera) es información adicional que se envía junto con una petic
 
 ## Probando con Postman
 
-![Gráfico explicativo](img/grafico15.png)
+![Gráfico explicativo](img/Grafico15.png)
 
 ## Middleware para Validaciones
 
@@ -174,4 +174,4 @@ Sirve para validar los datos **antes** de llegar al controlador.
 - Si falta algo, no deja pasar y manda error.
 - Si todo está bien, deja que el servidor cree el usuario.
 
-![Gráfico explicativo](img/grafico16.png)
+![Gráfico explicativo](img/Grafico16.png)
