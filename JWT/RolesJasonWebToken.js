@@ -1,4 +1,4 @@
-// archivo: app.js
+// archivo: RolesJasonWebToken.js
 
 // Se importa el framework Express para crear el servidor web
 const express = require('express');
