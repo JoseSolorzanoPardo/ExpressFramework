@@ -1,12 +1,12 @@
 // archivo: app.js
-require('dotenv').config();
 const express = require('express');
 const jwt = require('jsonwebtoken');
 
 const app = express();
 app.use(express.json());
 
-const CLAVE_SECRETA = process.env.JWT_SECRET || 'clave_super_secreta';
+// 🔐 Clave secreta hardcodeada
+const CLAVE_SECRETA = 'clave_super_secreta';
 
 // Simula una base de datos de usuarios
 const usuarios = [
