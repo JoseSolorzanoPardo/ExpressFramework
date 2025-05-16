@@ -19,6 +19,16 @@ app.post('/login', (req, res) => {
   const { usuario } = req.body;
 
   const user = usuarios.find(u => u.usuario === usuario);
+  /*let user = null;
+  for (let i = 0; i < usuarios.length; i++) {
+    if (usuarios[i].usuario === usuario) {
+      user = usuarios[i];
+      break;
+    }
+  }*/
+
+
+  
   if (!user) return res.status(401).send('Usuario no encontrado');
 
   const token = jwt.sign(
