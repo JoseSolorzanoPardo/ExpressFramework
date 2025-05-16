@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 const app = express();
 app.use(express.json());
 
-// 🔐 Clave secreta hardcodeada
+// Clave secreta hardcodeada
 const CLAVE_SECRETA = 'clave_super_secreta';
 
 // Simula una base de datos de usuarios
