@@ -87,3 +87,9 @@ Aunque el token esté en texto legible (el payload está codificado pero no cifr
 - No tiene la clave secreta.
 - No puede generar una firma válida nueva.
 - El servidor al verificar con jwt.verify() verá que la firma **no coincide** y rechazará el token.
+```
+npm init -y
+npm install express
+npm install -g nodemon
+npm install jsonwebtoken
+```
