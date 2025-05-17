@@ -90,6 +90,6 @@ Aunque el token esté en texto legible (el payload está codificado pero no cifr
 ```
 npm init -y
 npm install express
-npm install -g nodemon
+npm install nodemon
 npm install jsonwebtoken
 ```
