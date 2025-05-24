@@ -1,3 +1,8 @@
+/*npm init -y
+npm install express
+npm install nodemon
+*/
+
 // Importamos el módulo express para crear la aplicación web
 const express = require('express');
 const app = express();
