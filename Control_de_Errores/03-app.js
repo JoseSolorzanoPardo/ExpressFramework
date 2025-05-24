@@ -93,3 +93,70 @@ app.use((err, req, res, next) => {
 app.listen(3000, () => {
   console.log('Servidor corriendo en http://localhost:3000');
 });
+
+
+// ---------------------------------------------
+// Casos de prueba para POST /login
+// ---------------------------------------------
+
+/*
+ * Caso 1: Solicitud válida con usuario
+ * Entrada: { "usuario": "Jose" }
+ * Resultado esperado: HTTP 200, { token: "<token válido>" }
+ */
+
+/*
+ * Caso 2: Solicitud sin usuario
+ * Entrada: {}
+ * Resultado esperado: HTTP 400, { mensaje: 'Usuario es obligatorio' }
+ */
+
+// ---------------------------------------------
+// Casos de prueba para GET /protegida
+// ---------------------------------------------
+
+/*
+ * Caso 1: Acceso con token válido
+ * Paso: Obtener token del /login con usuario válido y usarlo en Authorization
+ * Header: Authorization: Bearer <token>
+ * Resultado esperado: HTTP 200, { mensaje: 'Bienvenido Jose, acceso concedido' }
+ */
+
+/*
+ * Caso 2: Acceso sin token
+ * Resultado esperado: HTTP 401, { mensaje: 'Token requerido' }
+ */
+
+/*
+ * Caso 3: Acceso con token inválido (token alterado o falso)
+ * Header: Authorization: Bearer <token_invalido>
+ * Resultado esperado: HTTP 403, { mensaje: 'Token inválido' }
+ */
+
+/*
+ * Caso 4: Acceso con token expirado (simula expiración)
+ * Resultado esperado: HTTP 403, { mensaje: 'Token expirado' }
+ */
+
+// ---------------------------------------------
+// Casos de prueba para rutas no encontradas
+// ---------------------------------------------
+
+/*
+ * Caso: Acceso a ruta no definida
+ * Ruta: /noExiste
+ * Resultado esperado: HTTP 404, { mensaje: 'Ruta no encontrada' }
+ */
+
+// ---------------------------------------------
+// Casos de prueba para error global (simulación)
+// ---------------------------------------------
+
+/*
+ * Caso: Simular error global
+ * Modificar temporalmente una ruta (por ejemplo /login) para forzar:
+ * throw new Error('Error grave');
+ * Resultado esperado: HTTP 500, { mensaje: 'Error grave' }
+ */
+
+
