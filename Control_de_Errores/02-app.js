@@ -191,7 +191,9 @@ app.listen(3000, () => {
 /*
  * Caso de prueba: Error global simulado
  * Forzar un error (throw new Error('Fallo grave')) en alguna ruta
+ * throw new Error('Fallo grave');
  * Resultado esperado: HTTP 500, { mensaje: 'Fallo grave' }
+ * 
  */
 
 
