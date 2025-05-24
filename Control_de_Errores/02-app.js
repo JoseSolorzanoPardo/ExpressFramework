@@ -99,3 +99,100 @@ app.listen(3000, () => {
   console.log('Servidor corriendo en http://localhost:3000');
 });
 
+
+
+
+
+
+// ---------------------------------------------
+// Casos de prueba para POST /registroUsuario
+// ---------------------------------------------
+
+/*
+ * Caso de prueba 1: Registro válido
+ * Entrada: { "nombre": "Juan", "edad": 25 }
+ * Resultado esperado: HTTP 201, { mensaje: 'Usuario creado', usuario: { ... } }
+ */
+
+/*
+ * Caso de prueba 2: Falta el nombre
+ * Entrada: { "edad": 25 }
+ * Resultado esperado: HTTP 400, { mensaje: 'El nombre es obligatorio y debe ser texto' }
+ */
+
+/*
+ * Caso de prueba 3: Nombre no es texto
+ * Entrada: { "nombre": 1234, "edad": 25 }
+ * Resultado esperado: HTTP 400, { mensaje: 'El nombre es obligatorio y debe ser texto' }
+ */
+
+/*
+ * Caso de prueba 4: Falta la edad
+ * Entrada: { "nombre": "Ana" }
+ * Resultado esperado: HTTP 400, { mensaje: 'La edad debe ser un número positivo' }
+ */
+
+/*
+ * Caso de prueba 5: Edad no es un número
+ * Entrada: { "nombre": "Ana", "edad": "veinte" }
+ * Resultado esperado: HTTP 400, { mensaje: 'La edad debe ser un número positivo' }
+ */
+
+/*
+ * Caso de prueba 6: Edad negativa
+ * Entrada: { "nombre": "Ana", "edad": -5 }
+ * Resultado esperado: HTTP 400, { mensaje: 'La edad debe ser un número positivo' }
+ */
+
+// ---------------------------------------------
+// Casos de prueba para GET /dividir
+// ---------------------------------------------
+
+/*
+ * Caso de prueba 1: División válida
+ * Query: ?a=10&b=2
+ * Resultado esperado: HTTP 200, { resultado: 5 }
+ */
+
+/*
+ * Caso de prueba 2: División con decimales
+ * Query: ?a=7.5&b=2.5
+ * Resultado esperado: HTTP 200, { resultado: 3 }
+ */
+
+/*
+ * Caso de prueba 3: Falta un parámetro
+ * Query: ?a=10
+ * Resultado esperado: HTTP 400, { mensaje: 'Los parámetros deben ser números' }
+ */
+
+/*
+ * Caso de prueba 4: Parámetros no numéricos
+ * Query: ?a=abc&b=3
+ * Resultado esperado: HTTP 400, { mensaje: 'Los parámetros deben ser números' }
+ */
+
+/*
+ * Caso de prueba 5: División por cero
+ * Query: ?a=10&b=0
+ * Resultado esperado: HTTP 400, { mensaje: 'No se puede dividir por cero' }
+ */
+
+// ---------------------------------------------
+// Casos de prueba generales
+// ---------------------------------------------
+
+/*
+ * Caso de prueba: Ruta no existente
+ * Ruta: /rutaInvalida
+ * Resultado esperado: HTTP 404, { mensaje: 'Ruta no encontrada' }
+ */
+
+/*
+ * Caso de prueba: Error global simulado
+ * Forzar un error (throw new Error('Fallo grave')) en alguna ruta
+ * Resultado esperado: HTTP 500, { mensaje: 'Fallo grave' }
+ */
+
+
+
