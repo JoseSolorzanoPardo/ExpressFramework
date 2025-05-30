@@ -1,4 +1,4 @@
-**Objetivo:**  
+**Objetivo min Proyecto:**  
 Desarrollar un sistema básico de gestión de usuarios utilizando Node.js con el framework Express y MongoDB como base de datos. El sistema implementará autenticación segura mediante JSON Web Tokens (JWT) y control de acceso basado en roles (admin, user).
 
 **Descripción General:**  
