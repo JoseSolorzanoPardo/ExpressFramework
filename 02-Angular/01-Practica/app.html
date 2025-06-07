@@ -1,0 +1,37 @@
+<!-- Muestra el título definido en el componente (propiedad 'title') -->
+<h1>{{ title }}</h1>
+
+<!-- Muestra un mensaje de bienvenida (propiedad 'mensaje') -->
+<p>{{ mensaje }}</p>
+
+<!-- Lista simple: recorre el array de strings 'tecnologias' -->
+<ul>
+  <!-- *ngFor crea un <li> por cada elemento del array 'tecnologias' -->
+  <li *ngFor="let tech of tecnologias">
+    {{ tech }} <!-- Muestra el valor del string: Angular, React, etc. -->
+  </li>
+</ul>
+
+<!-- Lista de objetos: recorre el array 'tecnologias2' que contiene nombre y versión -->
+<ul>
+  <!-- Por cada objeto 'tech' en 'tecnologias2', crea un elemento <li> -->
+  <li *ngFor="let tech of tecnologias2">
+    <!-- Muestra las propiedades del objeto -->
+    {{ tech.nombre }} - versión {{ tech.version }}
+
+    <!-- Botón para eliminar ese objeto llamando al método 'eliminarTecnologia' -->
+    <button (click)="eliminarTecnologia(tech.nombre)">Eliminar</button>
+  </li>
+</ul>
+
+<!-- Muestra el valor actual del contador -->
+<h2>Contador: {{ contador }}</h2>
+
+<!-- Botón que incrementa el contador al hacer clic -->
+<button (click)="incrementar()">+</button>
+
+<!-- Botón que decrementa el contador al hacer clic -->
+<button (click)="decrementar()">-</button>
+
+<!-- Placeholder para cargar componentes según la ruta actual del navegador -->
+<router-outlet />
