@@ -135,3 +135,5 @@ zone.js es una librería que Angular ha usado tradicionalmente para detectar aut
 
 ├── tsconfig.spec.json ← Configuración TypeScript para pruebas unitarias (Jasmine/Karma)
 ```
+
+**Nota:** una **directiva** es una instrucción especial que le dice al DOM (Document Object Model) cómo comportarse o cómo transformarse. Las directivas son una de las piezas clave del sistema de plantillas de Angular.
