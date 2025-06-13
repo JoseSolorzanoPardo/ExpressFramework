@@ -1,0 +1,31 @@
+<!-- Título principal de la sección -->
+<h2>Lista de Áreas</h2>
+
+<!-- Tabla con borde y espaciado básico -->
+<table border="1" cellpadding="8" cellspacing="0">
+
+  <!-- Encabezado de la tabla -->
+  <thead>
+    <tr>
+      <!-- Nombres de las columnas -->
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Descripción</th>
+    </tr>
+  </thead>
+
+  <!-- Cuerpo de la tabla donde se renderiza dinámicamente el contenido -->
+  <tbody>
+
+    <!-- Directiva *ngFor de Angular para recorrer el arreglo 'areas' -->
+    <!-- Por cada 'area' en el array, se genera una fila -->
+    <tr *ngFor="let area of areas">
+      
+      <!-- Se muestran los datos del objeto 'area' usando interpolación -->
+      <td>{{ area.id }}</td>              <!-- Muestra el ID del área -->
+      <td>{{ area.nombre }}</td>          <!-- Muestra el nombre del área -->
+      <td>{{ area.descripcion }}</td>     <!-- Muestra la descripción del área -->
+
+    </tr>
+  </tbody>
+</table>
