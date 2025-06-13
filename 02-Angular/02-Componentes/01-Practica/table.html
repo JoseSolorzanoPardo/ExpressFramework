@@ -1,0 +1,31 @@
+<!-- Título principal que aparece sobre la tabla -->
+<h2>Lista de Usuarios</h2>
+
+<!-- Tabla con borde y espaciado definido -->
+<table border="1" cellpadding="8" cellspacing="0">
+
+  <!-- Encabezado de la tabla -->
+  <thead>
+    <tr>
+      <!-- Títulos de cada columna -->
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Correo</th>
+    </tr>
+  </thead>
+
+  <!-- Cuerpo de la tabla donde se mostrarán los datos -->
+  <tbody>
+
+    <!-- Estructura repetitiva para cada usuario del array 'usuarios' -->
+    <!-- *ngFor es una directiva de Angular que itera sobre la lista -->
+    <tr *ngFor="let usuario of usuarios">
+      
+      <!-- Cada celda muestra una propiedad del objeto 'usuario' -->
+      <td>{{ usuario.id }}</td>
+      <td>{{ usuario.nombre }}</td>
+      <td>{{ usuario.correo }}</td>
+    </tr>
+
+  </tbody>
+</table>
