@@ -4,12 +4,11 @@ Un componente en Angular es una unidad funcional y visual reutilizable que combi
 
 - una vista (HTML),
 - una lógica (TypeScript),
-- y unos estilos (CSS),  
-    para representar una parte de la interfaz de usuario de la aplicación.
+- y unos estilos (CSS), para representar una parte de la interfaz de usuario de la aplicación.
 
 ## Ejemplo en términos sencillos
 
-Si tu aplicación fuera una página de red social, podrías tener:
+Si una aplicación en construcción fuera una página de red social, podrías tener:
 
 - Un componente para el menú (&lt;app-menu&gt;),
 - Otro para las publicaciones (&lt;app-post&gt;),
