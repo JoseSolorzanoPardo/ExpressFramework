@@ -1,0 +1,29 @@
+<!-- Título del formulario -->
+<h2>Formulario de Usuario</h2>
+
+<!-- Inicio del formulario.
+     (ngSubmit)="enviar()" → llama al método 'enviar()' del componente cuando se envía el formulario.
+     #formUsuario="ngForm" → crea una referencia local al formulario para acceder a su estado (como .valid). -->
+<form (ngSubmit)="enviar()" #formUsuario="ngForm">
+
+  <!-- Etiqueta y campo de entrada para el nombre -->
+  <label for="nombre">Nombre:</label>
+  
+  <!-- Campo de entrada de texto:
+       [(ngModel)] → vincula el valor del input con usuario.nombre (two-way data binding).
+       name="nombre" → necesario para que Angular registre este control dentro del formulario.
+       required → marca el campo como obligatorio. -->
+  <input type="text" id="nombre" [(ngModel)]="usuario.nombre" name="nombre" required>
+  <br><br>
+
+  <!-- Etiqueta y campo de entrada para el correo -->
+  <label for="correo">Correo:</label>
+
+  <!-- Campo de entrada tipo email con validación requerida. -->
+  <input type="email" id="correo" [(ngModel)]="usuario.correo" name="correo" required>
+  <br><br>
+
+  <!-- Botón para enviar el formulario.
+       [disabled]="!formUsuario.valid" → el botón estará deshabilitado si el formulario no es válido. -->
+  <button type="submit" [disabled]="!formUsuario.valid">Enviar</button>
+</form>
