@@ -42,9 +42,5 @@ export class TableAreas {
       id: 4,
       nombre: 'Finanzas',
       descripcion: 'Supervisa la contabilidad y presupuesto institucional'
-    },
-    {
-      id: 5,
-      nombre: 'Investigación y Desarrollo',
-      descripcion: 'Pr
+    }];
 
