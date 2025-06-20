@@ -14,40 +14,34 @@ Características principales:
 
 **Bootstrap:**
 
-Tipo: Framework de diseño (CSS/JS).
-
-Uso: Mejora la apariencia visual de una aplicación (botones, formularios, diseño responsivo, etc.).
-
-Tecnología base: HTML, CSS y un poco de JavaScript.
-
-No maneja lógica ni datos, solo el diseño visual.
+- Tipo: Framework de diseño (CSS/JS).
+- Uso: Mejora la apariencia visual de una aplicación (botones, formularios, diseño responsivo, etc.).
+- Tecnología base: HTML, CSS y un poco de JavaScript.
+- No maneja lógica ni datos, solo el diseño visual.
 
 **Angular:**
 
-Tipo: Framework de aplicaciones web completas (Frontend, SPA).
-
-Uso: Desarrolla aplicaciones interactivas con componentes, servicios, rutas, formularios, etc.
-
-Tecnología base: TypeScript y JavaScript.
-
-Maneja lógica, datos, comunicación con backend, etc.
+- Tipo: Framework de aplicaciones web completas (Frontend, SPA).
+- Uso: Desarrolla aplicaciones interactivas con componentes, servicios, rutas, formularios, etc.
+- Tecnología base: TypeScript y JavaScript.
+- Maneja lógica, datos, comunicación con backend, etc.
 
 ## ¿Cómo instalar Bootstrap en un proyecto de Angular?
 
 Comando o sentencia npm:
-```
+
 npm install Bootstrap
-```
+
 En angular.json, agregar:
-```
-"styles": [
+
+"styles": \[
 
 "node_modules/bootstrap/dist/css/bootstrap.min.css",
 
 "src/styles.css"
 
-]
-```
+\]
+
 Ya con esto tendríamos Bootstrap instalado en nuestro proyecto.
 
 ## ¿Qué es una directiva?
@@ -58,23 +52,19 @@ Por lo tanto, una directiva es como un comando especial que afecta cómo se rend
 
 **1\. Directivas estructurales**
 
-Cambian la estructura del DOM (agregar o quitar elementos).
+Cambian la estructura del DOM (agregar o quitar elementos). Ejemplos:
 
-Ejemplos:
-
-- - \*ngIf → muestra u oculta elementos.
-    - \*ngFor → repite un elemento por cada item de una lista.
-    - \*ngSwitch → muestra diferentes bloques dependiendo de un valor.
+- ngIf → muestra u oculta elementos.
+- ngFor → repite un elemento por cada item de una lista.
+- ngSwitch → muestra diferentes bloques dependiendo de un valor.
 
 **2\. Directivas de atributo**
 
-Cambian la apariencia o el comportamiento de un elemento.
+Cambian la apariencia o el comportamiento de un elemento. Ejemplos:
 
-Ejemplos:
-
-- - ngClass → aplica clases CSS condicionalmente.
-    - ngStyle → aplica estilos en línea.
-    - \[(ngModel)\] → enlaza datos a un input.
+- ngClass → aplica clases CSS condicionalmente.
+- ngStyle → aplica estilos en línea.
+- \[(ngModel)\] → enlaza datos a un input.
 
 ## ¿Qué es Data Binding?
 
