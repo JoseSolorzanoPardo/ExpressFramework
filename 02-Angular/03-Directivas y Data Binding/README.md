@@ -29,19 +29,16 @@ Características principales:
 ## ¿Cómo instalar Bootstrap en un proyecto de Angular?
 
 Comando o sentencia npm:
-
+```
 npm install Bootstrap
-
+```
 En angular.json, agregar:
-
-"styles": \[
-
+```
+"styles": [
 "node_modules/bootstrap/dist/css/bootstrap.min.css",
-
 "src/styles.css"
-
-\]
-
+]
+```
 Ya con esto tendríamos Bootstrap instalado en nuestro proyecto.
 
 ## ¿Qué es una directiva?
