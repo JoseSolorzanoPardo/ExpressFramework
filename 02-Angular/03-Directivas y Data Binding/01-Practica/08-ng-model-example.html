@@ -1,0 +1,27 @@
+<!-- Contenedor principal con margen superior, usando clases de Bootstrap -->
+<div class="container mt-4">
+
+    <!-- Título de la sección -->
+    <h2>Registrar Curso</h2>
+
+    <!-- Grupo de formulario con margen inferior -->
+    <div class="mb-3">
+
+        <!-- Etiqueta asociada al campo de texto -->
+        <label for="nombre" class="form-label">Nombre del Curso:</label>
+
+        <!-- Campo de entrada de texto -->
+        <!-- Tipo de campo: texto -->
+        <!-- ID del input, para enlazar con el label -->
+        <!-- Clase de Bootstrap para estilos -->
+        <!-- Enlace bidireccional con la propiedad del componente -->
+        <!-- Texto de ayuda dentro del campo -->
+        <input type="text" id="nombre" class="form-control" [(ngModel)]="nombreCurso"
+            placeholder="Escribe el nombre del curso" />
+    </div>
+
+    <!-- Texto que se actualiza automáticamente con lo que se escribe en el input -->
+    <p class="mt-3">
+        <strong>Curso ingresado:</strong> {{ nombreCurso }}
+    </p>
+</div>
