@@ -1,0 +1,24 @@
+<!-- Contenedor principal con margen superior (clase Bootstrap) -->
+<div class="container mt-4">
+
+  <!-- Lista desordenada con clases de Bootstrap para mostrar elementos tipo "card" -->
+  <ul class="list-group mt-4">
+
+    <!-- *ngFor: Recorre la lista de cursos y genera un <li> por cada curso -->
+    <!-- [ngStyle]: Aplica un color dinámico al texto según si el curso está activo o no -->
+    <!-- class="d-flex justify-content-between": alinea el texto del curso a la izquierda y la duración a la derecha -->
+    <li
+      *ngFor="let curso of cursos"
+      class="list-group-item d-flex justify-content-between"
+      [ngStyle]="{ color: obtenerColorPorEstado(curso.activo) }"
+    >
+      <!-- Muestra el nombre del curso -->
+      {{ curso.nombre }}
+
+      <!-- Muestra la duración del curso con estilo de texto tenue -->
+      <span class="text-muted">{{ curso.duracion }}</span>
+    </li>
+
+  </ul>
+
+</div>
