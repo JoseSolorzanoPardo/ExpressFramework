@@ -30,7 +30,7 @@ Características principales:
 
 Comando o sentencia npm:
 ```
-npm install Bootstrap
+npm install bootstrap
 ```
 En angular.json, agregar:
 ```
