@@ -1,0 +1,62 @@
+<!-- Contenedor principal con márgenes de Bootstrap -->
+<div class="container mt-4">
+
+  <!-- Título de la sección -->
+  <h2 class="mb-4">Lista de Usuarios</h2>
+
+  <!-- ngIf: Mostrar la tabla si hay usuarios; si no, mostrar el contenido alternativo 'sinUsuarios' -->
+  <div *ngIf="usuarios.length > 0; else sinUsuarios">
+
+    <!-- Tabla con estilos de Bootstrap -->
+    <table class="table table-bordered table-striped table-hover">
+
+      <!-- Encabezado de la tabla con fondo oscuro -->
+      <thead class="table-dark">
+        <tr>
+          <th>Nombre</th>
+          <th>Correo</th>
+          <th>Fecha de Nacimiento</th>
+          <th>Perfil</th>
+          <th>Acceso</th>
+        </tr>
+      </thead>
+
+      <!-- Cuerpo de la tabla -->
+      <tbody>
+
+        <!-- ngFor: Itera sobre cada usuario en la lista -->
+        <tr *ngFor="let usuario of usuarios">
+
+          <!-- Muestra cada propiedad del usuario -->
+          <td>{{ usuario.nombre }}</td>
+          <td>{{ usuario.correo }}</td>
+
+          <!-- Pipe 'date': Formatea la fecha de nacimiento en formato largo -->
+          <td>{{ usuario.fechaNacimiento | date: 'longDate' }}</td>
+
+          <td>{{ usuario.perfil }}</td>
+
+          <!-- ngIf dentro de la tabla: muestra texto condicional según el perfil -->
+          <td>
+            <!-- Si el perfil es 'Administrador', se muestra 'Acceso total' -->
+            <span *ngIf="usuario.perfil === 'Administrador'; else sinPermiso">
+              Acceso total
+            </span>
+
+            <!-- ng-template con #sinPermiso: contenido alternativo si no es administrador -->
+            <ng-template #sinPermiso>
+              Sin acceso de administrador
+            </ng-template>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ng-template con #sinUsuarios: se muestra solo si la lista está vacía -->
+  <ng-template #sinUsuarios>
+    <div class="alert alert-info">No hay usuarios registrados aún.</div>
+  </ng-template>
+
+</div>
