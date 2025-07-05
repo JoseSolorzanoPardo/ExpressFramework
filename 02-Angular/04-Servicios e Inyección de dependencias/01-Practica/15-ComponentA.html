@@ -1,0 +1,36 @@
+
+<!-- Tarjeta Bootstrap con sombra y margen inferior -->
+<div class="card shadow-sm mb-4">
+
+  <!-- Encabezado de la tarjeta con fondo verde y texto blanco -->
+  <div class="card-header bg-success text-white">
+    <h5 class="mb-0">Componente A</h5>
+  </div>
+
+  <!-- Cuerpo de la tarjeta -->
+  <div class="card-body">
+
+    <!-- Espacio para el input con separación inferior -->
+    <div class="mb-3">
+
+      <!-- Etiqueta asociada al input de mensaje -->
+      <label for="mensajeInput" class="form-label">Mensaje</label>
+
+      <!-- Campo de texto que captura el mensaje del usuario -->
+      <input
+        id="mensajeInput"
+        type="text"
+        class="form-control"
+        
+    
+        [(ngModel)]="nuevoMensaje"
+        
+      
+        (ngModelChange)="enviarMensaje()"
+
+        placeholder="Escribe un mensaje"
+      />
+    </div>
+    
+  </div>
+</div>
