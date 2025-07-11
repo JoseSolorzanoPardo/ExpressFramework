@@ -1,0 +1,41 @@
+<!-- Título principal de la aplicación, usando interpolación de Angular -->
+<h1>{{ title }}</h1>
+
+<!-- Barra de navegación con estilo moderado usando Tailwind CSS -->
+<nav class="bg-gray-100 p-3 rounded flex gap-3">
+  
+  <!-- Enlace a la ruta /page01 -->
+  <!-- Dirección a la que se navega -->
+  <!-- Estilo cuando el enlace está activo -->
+  <!-- Estilo por defecto y al pasar el mouse -->
+
+  <a
+    routerLink="/page01"
+    routerLinkActive="text-blue-600 font-semibold underline" 
+    class="text-gray-700 hover:text-blue-600 transition-colors" 
+  >
+    Page 01
+  </a>
+
+  <!-- Enlace a la ruta /page02 -->
+  <a
+    routerLink="/page02"
+    routerLinkActive="text-blue-600 font-semibold underline"
+    class="text-gray-700 hover:text-blue-600 transition-colors"
+  >
+    Page 02
+  </a>
+
+  <!-- Enlace a la ruta /page03 -->
+  <a
+    routerLink="/page03"
+    routerLinkActive="text-blue-600 font-semibold underline"
+    class="text-gray-700 hover:text-blue-600 transition-colors"
+  >
+    Page 03
+  </a>
+
+</nav>
+
+<!-- Punto donde Angular insertará el componente correspondiente a la ruta activa -->
+<router-outlet />
