@@ -1,0 +1,17 @@
+<!-- Título principal de la aplicación, usando interpolación de Angular -->
+<h1>{{ title }}</h1>
+
+<!-- Contenedor de botones de navegación manual usando eventos de Angular -->
+<div>
+  <!-- Botón que navega a la ruta 'page01' al hacer clic -->
+  <button (click)="irAPagina('page01')">Page 01</button>
+
+  <!-- Botón que navega a la ruta 'page02' al hacer clic -->
+  <button (click)="irAPagina('page02')">Page 02</button>
+
+  <!-- Botón que navega a la ruta 'page03' al hacer clic -->
+  <button (click)="irAPagina('page03')">Page 03</button>
+</div>
+
+<!-- Punto donde Angular insertará dinámicamente el componente asociado a la ruta activa -->
+<router-outlet />
