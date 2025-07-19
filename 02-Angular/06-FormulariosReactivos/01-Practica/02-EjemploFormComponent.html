@@ -1,0 +1,72 @@
+<!-- Contenedor general con márgenes laterales para centrar el formulario -->
+<div class="container">
+
+  <!-- Formulario que está enlazado a un FormGroup desde el componente -->
+  <!-- (ngSubmit)="onSubmit()" ejecuta el método del componente al hacer submit -->
+  <!-- Bootstrap: p-4 (padding), border (borde), rounded (esquinas redondeadas), bg-light (fondo claro) -->
+  <form [formGroup]="miFormulario" (ngSubmit)="onSubmit()" class="p-4 border rounded bg-light">
+
+    <!-- Campo: Nombre -->
+    <div class="mb-3"> <!-- mb-3: margen inferior entre campos -->
+      <label for="nombre" class="form-label">Nombre:</label>
+      
+      <!-- Campo de entrada enlazado al control "nombre" del FormGroup -->
+      <!-- formControlName="nombre" vincula el input al campo del formulario reactivo -->
+      <!-- class.is-invalid activa estilo rojo de Bootstrap si el campo es inválido y tocado -->
+      <input
+        id="nombre"
+        type="text"
+        formControlName="nombre"
+        class="form-control"
+        [class.is-invalid]="miFormulario.get('nombre')?.invalid && miFormulario.get('nombre')?.touched"
+      >
+
+      <!-- Mensaje de error visible si el campo es inválido y ya fue tocado -->
+      <div class="invalid-feedback" *ngIf="miFormulario.get('nombre')?.invalid && miFormulario.get('nombre')?.touched">
+        El nombre es obligatorio.
+      </div>
+    </div>
+
+    <!-- Campo: Correo -->
+    <div class="mb-3">
+      <label for="correo" class="form-label">Correo:</label>
+      
+      <input
+        id="correo"
+        type="email"
+        formControlName="correo"
+        class="form-control"
+        [class.is-invalid]="miFormulario.get('correo')?.invalid && miFormulario.get('correo')?.touched"
+      >
+
+      <div class="invalid-feedback" *ngIf="miFormulario.get('correo')?.invalid && miFormulario.get('correo')?.touched">
+        El correo es inválido.
+      </div>
+    </div>
+
+    <!-- Campo: Edad -->
+    <div class="mb-3">
+      <label for="edad" class="form-label">Edad:</label>
+      
+      <input
+        id="edad"
+        type="number"
+        formControlName="edad"
+        class="form-control"
+        [class.is-invalid]="miFormulario.get('edad')?.invalid && miFormulario.get('edad')?.touched"
+      >
+
+      <!-- Se muestra solo si falla la validación "min" (edad menor a 18) -->
+      <div class="invalid-feedback" *ngIf="miFormulario.get('edad')?.errors?.['min']">
+        Debe ser mayor de edad.
+      </div>
+    </div>
+
+    <!-- Botón para enviar el formulario -->
+    <!-- El botón estará deshabilitado si el formulario no es válido -->
+    <button type="submit" class="btn btn-primary" [disabled]="miFormulario.invalid">
+      Enviar
+    </button>
+    
+  </form>
+</div>
