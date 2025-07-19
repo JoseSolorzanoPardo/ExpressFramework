@@ -1,0 +1,31 @@
+<div class="container">
+<form [formGroup]="formulario" (ngSubmit)="onSubmit()" class="p-4 border rounded bg-light">
+  <!-- Campo Producto -->
+  <div class="mb-3">
+    <label class="form-label">Producto:</label>
+    <input type="text" class="form-control" formControlName="producto" placeholder="Nombre del producto">
+    <div class="text-danger mt-1" *ngIf="formulario.get('producto')?.invalid && formulario.get('producto')?.touched">
+      El producto es obligatorio.
+    </div>
+  </div>
+
+  <!-- Lista de Precios -->
+  <div formArrayName="precios">
+    <div *ngFor="let precio of precios.controls; let i = index" [formGroupName]="i" class="mb-3 d-flex align-items-center">
+      <div class="flex-grow-1 me-2">
+        <label class="form-label">Precio {{ i + 1 }}:</label>
+        <input type="number" class="form-control" formControlName="monto" placeholder="Ingrese un precio">
+        <button type="button" class="btn btn-danger" (click)="eliminarPrecio(i)">Eliminar</button>
+        <div class="text-danger mt-1" *ngIf="precio.get('monto')?.invalid && precio.get('monto')?.touched">
+          El precio es obligatorio y debe ser mayor a 0.
+        </div>
+      </div>
+          </div>
+  </div>
+
+  <!-- Botones -->
+ 
+    <button type="button" class="btn btn-primary" (click)="agregarPrecio()">Agregar precio</button>
+    <button type="submit" class="btn btn-success" [disabled]="formulario.invalid">Enviar</button>
+ </form>
+</div>
