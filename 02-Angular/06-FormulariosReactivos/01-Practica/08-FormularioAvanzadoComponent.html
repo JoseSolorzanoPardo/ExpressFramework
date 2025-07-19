@@ -1,0 +1,84 @@
+<!-- Contenedor principal con margen superior -->
+<div class="container mt-4">
+
+  <!-- Formulario enlazado al FormGroup definido en el componente -->
+  <!-- Se ejecuta 'onSubmit()' al hacer submit -->
+  <!-- Estilizado con clases Bootstrap: borde, padding, fondo blanco y sombra -->
+  <form [formGroup]="formulario" (ngSubmit)="onSubmit()" class="border p-4 rounded bg-white shadow">
+
+    <!-- Subgrupo del formulario: datos personales -->
+    <!-- Se usa 'formGroupName' para acceder al grupo anidado 'datosPersonales' -->
+    <div formGroupName="datosPersonales">
+      <h5 class="mb-3">Datos personales</h5>
+
+      <!-- Campo: Nombre -->
+      <div class="mb-3">
+        <label class="form-label">Nombre completo</label>
+        
+        <!-- Campo vinculado al FormControl 'nombre' dentro de 'datosPersonales' -->
+        <input 
+          type="text" 
+          formControlName="nombre" 
+          class="form-control"
+          [class.is-invalid]="formulario.get('datosPersonales.nombre')?.invalid && formulario.get('datosPersonales.nombre')?.touched"
+        >
+        
+        <!-- Mensaje de error visible solo si el campo es inválido y ha sido tocado -->
+        <div class="invalid-feedback">El nombre es obligatorio.</div>
+      </div>
+
+      <!-- Campo: Teléfono -->
+      <div class="mb-3">
+        <label class="form-label">Teléfono (10 dígitos)</label>
+        
+        <input 
+          type="text" 
+          formControlName="telefono" 
+          class="form-control"
+          [class.is-invalid]="formulario.get('datosPersonales.telefono')?.invalid && formulario.get('datosPersonales.telefono')?.touched"
+        >
+        
+        <!-- Mensaje de error si no cumple con la validación (regex para 10 dígitos) -->
+        <div class="invalid-feedback">Debe ingresar un teléfono válido de 10 dígitos.</div>
+      </div>
+    </div>
+
+    <!-- Subgrupo del formulario: dirección -->
+    <div formGroupName="direccion" class="mt-4">
+      <h5 class="mb-3">Dirección</h5>
+
+      <!-- Campo: Ciudad -->
+      <div class="mb-3">
+        <label class="form-label">Ciudad</label>
+        
+        <input 
+          type="text" 
+          formControlName="ciudad" 
+          class="form-control"
+          [class.is-invalid]="formulario.get('direccion.ciudad')?.invalid && formulario.get('direccion.ciudad')?.touched"
+        >
+
+        <!-- Mensaje de error si no se diligencia la ciudad -->
+        <div class="invalid-feedback">Debe indicar la ciudad.</div>
+      </div>
+
+      <!-- Campo: Tipo de residencia -->
+      <div class="mb-3">
+        <label class="form-label">Tipo de residencia</label>
+        
+        <!-- Select vinculado al campo 'tipoResidencia' dentro de 'direccion' -->
+        <select formControlName="tipoResidencia" class="form-select">
+          <option value="casa">Casa</option>
+          <option value="apartamento">Apartamento</option>
+          <option value="otro">Otro</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Botón de envío -->
+    <!-- Solo se activa si el formulario es válido -->
+    <button class="btn btn-success mt-3" type="submit" [disabled]="formulario.invalid">
+      Guardar
+    </button>
+  </form>
+</div>
