@@ -1,0 +1,37 @@
+<div class="container mt-4">
+  <form [formGroup]="formulario" (ngSubmit)="onSubmit()" class="p-4 border rounded bg-light">
+
+    <!-- Campo: Nombre -->
+    <div class="mb-3">
+      <label class="form-label">Nombre:</label>
+      <input type="text" formControlName="nombre" class="form-control"
+             [class.is-invalid]="formulario.get('nombre')?.invalid && formulario.get('nombre')?.touched">
+      <div class="invalid-feedback">El nombre es obligatorio.</div>
+    </div>
+
+    <!-- Campo: Correos (FormArray) -->
+    <div formArrayName="correos">
+      <label class="form-label">Correos Electrónicos:</label>
+
+      <div *ngFor="let correo of correos.controls; let i = index" [formGroupName]="i" class="input-group mb-2">
+        <input type="email" formControlName="email" class="form-control"
+               [class.is-invalid]="correo.get('email')?.invalid && correo.get('email')?.touched"
+               placeholder="ejemplo@correo.com">
+        <button type="button" class="btn btn-danger" (click)="eliminarCorreo(i)" *ngIf="correos.length > 1">
+          Eliminar
+        </button>
+        <div class="invalid-feedback" *ngIf="correo.get('email')?.invalid && correo.get('email')?.touched">
+          Correo inválido.
+        </div>
+      </div>
+    </div>
+
+    <!-- Botón para agregar nuevo correo -->
+    <button type="button" class="btn btn-secondary" (click)="agregarCorreo()">Agregar otro correo</button>
+
+    <!-- Botón de envío -->
+    <button type="submit" class="btn btn-primary" [disabled]="formulario.invalid">Enviar</button>
+
+  </form>
+</div>
+
