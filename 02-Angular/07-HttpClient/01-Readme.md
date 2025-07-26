@@ -27,19 +27,19 @@ Es una herramienta que crea una API REST fake a partir de un archivo JSON, en se
 2. npm install json-server
 3. Crear un archivo db.json con datos de prueba:
 ```
-{ "usuarios": \[
+{ "usuarios": [
 
 { "id": 1, "name": "Juan", "email": "<juan@mail.com>" },
 
 { "id": 2, "name": "Ana", "email": "<ana@mail.com>" }
 
-\],
+],
 
-"comments": \[
+"comments": [
 
 { "id": 1, "name": "Comentario 1", "body": "Texto de comentario" }
 
-\]
+]
 
 }
 ```
