@@ -1,0 +1,28 @@
+<div class="container mt-4">
+  <h3>Crear Usuario</h3>
+  <form (ngSubmit)="createUser()">
+    <div class="mb-3">
+      <label for="name" class="form-label">Nombre</label>
+      <input 
+        type="text" 
+        id="name" 
+        class="form-control" 
+        [(ngModel)]="newUser.name" 
+        name="name" 
+        required>
+    </div>
+
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input 
+        type="email" 
+        id="email" 
+        class="form-control" 
+        [(ngModel)]="newUser.email" 
+        name="email" 
+        required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Crear Usuario</button>
+  </form>
+</div>
