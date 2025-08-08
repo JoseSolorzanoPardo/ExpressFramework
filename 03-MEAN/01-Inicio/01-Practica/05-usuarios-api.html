@@ -1,0 +1,28 @@
+<div class="container mt-4">
+  <h1 class="mb-4">Listado de Usuarios</h1>
+
+  <!-- Tabla de usuarios -->
+  <div  class="table-responsive">
+    <table class="table table-striped table-hover table-bordered align-middle">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Email</th>
+          <th scope="col">Edad</th>
+          <th scope="col">Género</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let u of usuarios">
+          <td>{{ u.id }}</td>
+          <td>{{ u.nombre }}</td>
+          <td>{{ u.email }}</td>
+          <td>{{ u.edad }}</td>
+          <td>{{ u.genero }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
