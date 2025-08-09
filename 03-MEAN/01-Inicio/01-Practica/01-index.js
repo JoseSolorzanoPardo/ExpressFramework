@@ -68,6 +68,24 @@ app.get('/usuarios', (req, res) => {
 });
 // -------------------------------------------
 
+// Ruta para obtener un usuario por su ID
+app.get('/usuarios/:id', (req, res) => {
+  // Extraemos el parámetro id de la URL y lo convertimos a número
+  const id = parseInt(req.params.id);
+
+  // Buscamos el usuario con ese ID en el arreglo
+  const usuario = usuarios.find(u => u.id === id);
+
+  // Si existe, lo devolvemos en formato JSON
+  if (usuario) {
+    res.json(usuario);
+  } else {
+    // Si no existe, devolvemos un error 404
+    res.status(404).json({ mensaje: 'Usuario no encontrado' });
+  }
+});
+
+
 
 // -------------------------------------------
 // Iniciamos el servidor Express en el puerto definido
