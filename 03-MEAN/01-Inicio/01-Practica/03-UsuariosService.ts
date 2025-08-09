@@ -49,5 +49,11 @@ export class UsuariosService {
     // y esperamos que el backend devuelva un array en formato JSON
     return this.http.get<Usuario[]>(`${this.baseUrl}/usuarios`);
   }
+
+
+getUsuarioPorId(id: number): Observable<Usuario> {
+  return this.http.get<Usuario>(`${this.baseUrl}/usuarios/${id}`);
+}
+  
 }
 // -------------------------------------------
