@@ -1,0 +1,135 @@
+//  Importación de dependencias necesarias
+const express = require('express'); // Framework para crear aplicaciones web y APIs
+const cors = require('cors');       // Middleware para permitir peticiones desde otros dominios (CORS)
+const mongoose = require('mongoose'); // ODM para MongoDB que permite trabajar con esquemas y modelos
+
+//  Crear instancia de la aplicación Express
+const app = express();
+
+//  Configuración de middlewares
+app.use(cors()); // Habilita CORS para permitir peticiones externas
+app.use(express.json()); // Habilita el análisis del cuerpo de las solicitudes en formato JSON
+
+//  Conexión a la base de datos MongoDB usando Mongoose
+mongoose.connect('mongodb://localhost:27017/ProyectoCRUDMean', {})
+    .then(() => console.log(' Conectado a la base de datos ProyectoCRUDMean'))
+    .catch((error) => console.error(' Error al conectar con MongoDB:', error));
+
+//  Definición del esquema (estructura) de los documentos de sucursales
+const sucursalSchema = new mongoose.Schema({
+    nombre: { type: String, required: true, unique: true, trim: true }, // obligatorio, único, sin espacios extras
+    direccion: { type: String, required: true, trim: true },
+    ciudad: { type: String, required: true, trim: true },
+    telefono: { type: String, trim: true },
+    estado: { type: String, enum: ['activa', 'inactiva'], default: 'activa' }, // solo acepta estos dos valores
+    createdAt: { type: Date, default: Date.now } // fecha automática de creación
+});
+
+//  Creación del modelo a partir del esquema
+const Sucursal = mongoose.model('sucursal', sucursalSchema);
+
+//  GET: Obtener todas las sucursales ordenadas por fecha de creación (más reciente primero)
+app.get('/api/sucursales', async (req, res) => {
+    try {
+        const sucursales = await Sucursal.find().sort({ createdAt: -1 });
+        res.json(sucursales);
+    } catch (error) {
+        console.error('Error al obtener sucursales:', error);
+        res.status(500).json({ message: 'Error interno del servidor' });
+    }
+});
+
+//  POST: Crear una nueva sucursal
+app.post('/api/sucursales/guardar', async (req, res) => {
+    try {
+        const { nombre, direccion, ciudad, telefono, estado } = req.body;
+
+        // Validación básica de campos obligatorios
+        if (!nombre || !direccion || !ciudad) {
+            return res.status(400).json({ message: 'nombre, direccion y ciudad son obligatorios' });
+        }
+
+        const nuevaSucursal = new Sucursal({
+            nombre,
+            direccion,
+            ciudad,
+            telefono,
+            estado
+        });
+
+        const sucursalGuardada = await nuevaSucursal.save(); // Guarda en la base de datos
+        res.status(201).json(sucursalGuardada);
+    } catch (error) {
+        console.error('Error al crear sucursal:', error);
+        if (error.code === 11000) { // Error por nombre duplicado
+            return res.status(409).json({ message: 'El nombre de la sucursal ya existe' });
+        }
+        res.status(500).json({ message: 'Error interno del servidor' });
+    }
+});
+
+//  PUT: Actualizar una sucursal existente por ID
+app.put('/api/sucursales/update/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { nombre, direccion, ciudad, telefono, estado } = req.body;
+
+        // Validación básica
+        if (!nombre || !direccion || !ciudad) {
+            return res.status(400).json({ message: 'nombre, direccion y ciudad son obligatorios' });
+        }
+
+        const sucursalActualizada = await Sucursal.findByIdAndUpdate(
+            id,
+            { nombre, direccion, ciudad, telefono, estado },
+            { new: true, runValidators: true } // devuelve el documento actualizado y valida según el esquema
+        );
+
+        if (!sucursalActualizada) {
+            return res.status(404).json({ message: 'Sucursal no encontrada' });
+        }
+
+        res.json(sucursalActualizada);
+    } catch (error) {
+        console.error('Error al actualizar sucursal:', error);
+        if (error.code === 11000) {
+            return res.status(409).json({ message: 'El nombre de la sucursal ya existe' });
+        }
+        res.status(500).json({ message: 'Error interno del servidor' });
+    }
+});
+
+//  DELETE: Eliminar una sucursal por su ID
+app.delete('/api/sucursales/delete/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const sucursal = await Sucursal.findByIdAndDelete(id);
+
+        if (!sucursal) {
+            return res.status(404).json({ message: 'Sucursal no encontrada' });
+        }
+
+        res.json({ message: 'Sucursal eliminada correctamente' });
+    } catch (error) {
+        console.error('Error al eliminar sucursal:', error);
+        res.status(500).json({ message: 'Error interno del servidor' });
+    }
+});
+
+// ▶️ Iniciar el servidor en el puerto 3000
+const PORT = 3000;
+app.listen(PORT, () => {
+    console.log(` Servidor Express corriendo en puerto ${PORT}`);
+});
+
+/*
+ Ejemplo de cuerpo JSON para pruebas con POST o PUT:
+
+{
+  "nombre": "Sucursal Prueba",
+  "direccion": "Calle 50 # 10-20",
+  "ciudad": "Bogotá",
+  "telefono": "6015559999",
+  "estado": "activa"
+}
+*/
