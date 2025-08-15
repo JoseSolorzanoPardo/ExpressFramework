@@ -49,6 +49,20 @@ npm install cors
 
 \# -------------------------------------------
 
+/**
+ * Mongoose es una librería ODM para MongoDB en Node.js.
+ * Se instala con: npm install mongoose
+ * 
+ * Permite:
+ * - Conectarse a MongoDB
+ * - Definir esquemas y modelos
+ * - Realizar operaciones CRUD de forma estructurada
+ *
+ * Ejemplo:
+ * const mongoose = require('mongoose');
+ * mongoose.connect('mongodb://localhost/mi_basedatos');
+ */
+
 npm install mongoose
 
 ```
