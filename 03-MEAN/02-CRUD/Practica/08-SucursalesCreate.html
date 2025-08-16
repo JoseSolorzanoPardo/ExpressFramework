@@ -1,0 +1,87 @@
+<div class="container mt-4">
+  <h2 class="text-primary mb-3">Registrar Nueva Sucursal</h2>
+
+  <!-- Mensaje de confirmación -->
+<div *ngIf="mensaje" class="alert mt-3"
+     [ngClass]="{
+       'alert-success': tipoMensaje === 'success',
+       'alert-danger': tipoMensaje === 'error'
+     }">
+  {{ mensaje }}
+</div>
+
+  <form (ngSubmit)="crearSucursal()" #formSucursal="ngForm">
+    <div class="row g-3">
+      <div class="col-md-6">
+        <label for="nombre" class="form-label">Nombre</label>
+        <input
+          type="text"
+          id="nombre"
+          name="nombre"
+          class="form-control"
+          [(ngModel)]="nuevaSucursal.nombre"
+          required
+        />
+      </div>
+
+      <div class="col-md-6">
+        <label for="direccion" class="form-label">Dirección</label>
+        <input
+          type="text"
+          id="direccion"
+          name="direccion"
+          class="form-control"
+          [(ngModel)]="nuevaSucursal.direccion"
+          required
+        />
+      </div>
+
+      <div class="col-md-6">
+        <label for="ciudad" class="form-label">Ciudad</label>
+        <input
+          type="text"
+          id="ciudad"
+          name="ciudad"
+          class="form-control"
+          [(ngModel)]="nuevaSucursal.ciudad"
+          required
+        />
+      </div>
+
+      <div class="col-md-6">
+        <label for="telefono" class="form-label">Teléfono</label>
+        <input
+          type="text"
+          id="telefono"
+          name="telefono"
+          class="form-control"
+          [(ngModel)]="nuevaSucursal.telefono"
+        />
+      </div>
+
+      <div class="col-md-6">
+        <label for="estado" class="form-label">Estado</label>
+        <select
+          id="estado"
+          name="estado"
+          class="form-select"
+          [(ngModel)]="nuevaSucursal.estado"
+          required
+        >
+          <option [ngValue]="'activa'">Activa</option>
+          <option [ngValue]="'inactiva'">Inactiva</option>
+        </select>
+      </div>
+
+      <div class="col-md-6 d-flex align-items-end">
+        <button
+          type="submit"
+          class="btn btn-success w-100"
+          [disabled]="formSucursal.invalid"
+        >
+          Guardar Sucursal
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
