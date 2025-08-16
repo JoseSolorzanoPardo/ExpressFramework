@@ -1,0 +1,97 @@
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<div class="container mt-4">
+  <h1 class="mb-4 text-primary">Lista de Sucursales</h1>
+
+  <div class="card shadow-sm">
+    <div class="card-body p-0">
+      <table class="table table-striped table-hover mb-0">
+        <thead class="table-dark">
+          <tr>
+            <th>#</th>
+            <th>Nombre</th>
+            <th>Ciudad</th>
+            <th>Dirección</th>
+            <th>Teléfono</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let sucursal of sucursales; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ sucursal.nombre }}</td>
+            <td>{{ sucursal.ciudad }}</td>
+            <td>{{ sucursal.direccion }}</td>
+            <td>{{ sucursal.telefono || 'N/A' }}</td>
+            <td>
+              <span class="badge" [ngClass]="{
+                      'bg-success': sucursal.estado === 'activa',
+                      'bg-secondary': sucursal.estado === 'inactiva'
+                    }">
+                {{ sucursal.estado }}
+              </span>
+            </td>
+            <td>
+              <div class="d-flex gap-2">
+                <button class="btn btn-warning btn-sm" (click)="abrirFormularioEdicion(sucursal)">
+                  Editar
+                </button>
+                <button class="btn btn-danger btn-sm" (click)="eliminarSucursal(sucursal._id)">
+                  Eliminar
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- Formulario flotante -->
+      <div *ngIf="sucursalEditando" class="floating-form position-fixed top-0 end-0 bg-white border p-4 shadow"
+        style="width: 400px; height: 100%; z-index: 1050; overflow-y: auto;">
+        <h5 class="text-primary mb-3">Editar Sucursal</h5>
+
+        <form (ngSubmit)="guardarEdicion()">
+          <div class="mb-3">
+            <label class="form-label">Nombre</label>
+            <input type="text" class="form-control" [(ngModel)]="sucursalEditando.nombre" name="nombreEdit" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Dirección</label>
+            <input type="text" class="form-control" [(ngModel)]="sucursalEditando.direccion" name="direccionEdit"
+              required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Ciudad</label>
+            <input type="text" class="form-control" [(ngModel)]="sucursalEditando.ciudad" name="ciudadEdit" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Teléfono</label>
+            <input type="text" class="form-control" [(ngModel)]="sucursalEditando.telefono" name="telefonoEdit">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Estado</label>
+            <select class="form-select" [(ngModel)]="sucursalEditando.estado" name="estadoEdit">
+              <option [ngValue]="'activa'">Activa</option>
+              <option [ngValue]="'inactiva'">Inactiva</option>
+            </select>
+          </div>
+
+          <div class="d-flex justify-content-between">
+            <button type="button" class="btn btn-secondary" (click)="cancelarEdicion()">Cancelar</button>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+          </div>
+        </form>
+      </div>
+
+
+
+    </div>
+  </div>
+
+
+
+</div>
