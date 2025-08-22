@@ -65,6 +65,24 @@ npm install cors
 
 npm install mongoose
 
+/**
+ * JSON Web Token (jsonwebtoken) es una librería que permite generar y verificar tokens en formato JWT.
+ * Se instala con: npm install jsonwebtoken
+ * 
+ * Permite:
+ * - Generar tokens firmados para autenticar usuarios
+ * - Verificar la validez de un token recibido
+ * - Implementar autenticación basada en tokens (común en APIs RESTful)
+ * 
+ * Ejemplo:
+ * const jwt = require('jsonwebtoken');
+ * const token = jwt.sign({ id: usuario._id }, 'mi_clave_secreta', { expiresIn: '2h' });
+ * const verificado = jwt.verify(token, 'mi_clave_secreta');
+ */
+
+npm install jsonwebtoken
+
+
 ```
 
 ## ¿Qué es Bootstrap?
