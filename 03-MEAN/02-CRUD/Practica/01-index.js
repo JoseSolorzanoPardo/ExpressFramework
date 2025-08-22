@@ -99,8 +99,55 @@ app.put('/api/sucursales/update/:id', async (req, res) => {
     }
 });
 
-//  DELETE: Eliminar una sucursal por su ID
+const sucursalEliminadaSchema = new mongoose.Schema({
+  nombre: String,
+  direccion: String,
+  ciudad: String,
+  telefono: String,
+  estado: String,
+  createdAt: Date,
+  deletedAt: { type: Date, default: Date.now } // fecha en que se eliminó
+});
+
+const SucursalEliminada = mongoose.model('sucursalEliminada', sucursalEliminadaSchema);
+
+
+// DELETE: Eliminar una sucursal por su ID
 app.delete('/api/sucursales/delete/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const sucursal = await Sucursal.findById(id);
+    if (!sucursal) {
+      return res.status(404).json({ message: 'Sucursal no encontrada' });
+    }
+
+    // Guardar una copia en la colección de respaldo
+    const copia = new SucursalEliminada({
+      nombre: sucursal.nombre,
+      direccion: sucursal.direccion,
+      ciudad: sucursal.ciudad,
+      telefono: sucursal.telefono,
+      estado: sucursal.estado,
+      createdAt: sucursal.createdAt
+    });
+
+    await copia.save();
+
+    // Eliminar de la colección principal
+    await Sucursal.findByIdAndDelete(id);
+
+    res.json({ message: 'Sucursal eliminada y respaldada correctamente' });
+
+  } catch (error) {
+    console.error('Error al eliminar y respaldar sucursal:', error);
+    res.status(500).json({ message: 'Error interno del servidor' });
+  }
+});
+
+
+//  DELETE: Eliminar una sucursal por su ID
+/*app.delete('/api/sucursales/delete/:id', async (req, res) => {
     try {
         const { id } = req.params;
         const sucursal = await Sucursal.findByIdAndDelete(id);
@@ -114,7 +161,7 @@ app.delete('/api/sucursales/delete/:id', async (req, res) => {
         console.error('Error al eliminar sucursal:', error);
         res.status(500).json({ message: 'Error interno del servidor' });
     }
-});
+});*/
 
 // ▶️ Iniciar el servidor en el puerto 3000
 const PORT = 3000;
