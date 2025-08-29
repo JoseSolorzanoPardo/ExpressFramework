@@ -164,7 +164,7 @@ const Usuario = mongoose.model('usuario', userSchema);
 // ================================
 //  Autenticación con JWT
 // ================================
-const SECRET = 'mi_clave_secreta'; // ⚠️ En producción usar variables de entorno
+const SECRET = 'mi_clave_secreta'; // ⚠ En producción usar variables de entorno
 
 // Endpoint de login
 app.post('/api/auth/login', async (req, res) => {
@@ -227,4 +227,12 @@ Ejemplo de JSON para pruebas con POST o PUT:
   "telefono": "6015559999",
   "estado": "activa"
 }
+
+Inserción de usuario
+db.usuarios.insertOne({
+  email: "admin@correo.com",
+  password: "admin123"
+})
+
+
 */
