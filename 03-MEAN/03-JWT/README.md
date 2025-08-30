@@ -82,6 +82,27 @@ npm install mongoose
 
 npm install jsonwebtoken
 
+
+
+/*
+-----------------------------------------
+ Comandos Angular CLI para autenticación
+-----------------------------------------
+
+1) ng g guard auth/auth
+   → Crea un Guard (auth.guard.ts).
+   → Protege rutas: permite o bloquea acceso según autenticación.
+
+2) ng g interceptor auth/jwt
+   → Crea un Interceptor (jwt.interceptor.ts).
+   → Agrega automáticamente el token JWT a cada petición HTTP.
+
+ Juntos: 
+Guard = protege rutas.
+Interceptor = añade token en peticiones.
+-----------------------------------------
+*/
+
 ```
 
 ## ¿Qué es Bootstrap?
