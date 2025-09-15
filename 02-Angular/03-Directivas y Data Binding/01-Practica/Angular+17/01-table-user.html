@@ -1,0 +1,40 @@
+<div class="container mt-4">
+    <h2 class="mb-4">Lista de Usuarios</h2>
+
+    @if( usuarios.length > 0 ){
+    <table class="table table-bordered table-striped table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Correo</th>
+                <th scope="col">Fecha Nacimiento</th>
+                <th scope="col">Perfil</th>
+                <th scope="col">Acceso</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (usuario of usuarios; track usuario.correo) {
+            <tr>
+                <td>{{usuario.nombre}}</td>
+                <td>{{usuario.correo}}</td>
+                <td>{{usuario.fechaNacimiento | date:'fullDate'}}</td>
+                <td>{{ usuario.perfil }}</td>
+                <td>
+                    @if (usuario.perfil === 'Administrador') {
+                    <span>Acceso total</span>
+                    } @else {
+                    <span>Sin acceso de administrador</span>
+                    }
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+    }
+    @else{
+        <div class="alert alert-info">No hay usuarios registrados aún.</div>
+
+    }
+
+
+</div>
