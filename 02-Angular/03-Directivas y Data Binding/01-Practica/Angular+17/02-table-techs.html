@@ -1,0 +1,32 @@
+<!-- Contenedor principal con margen superior -->
+<div class="container mt-4">
+
+  <!-- Tabla con estilos de Bootstrap -->
+  <table class="table table-bordered">
+
+    <!-- Encabezado de la tabla con fondo oscuro -->
+    <thead class="table-dark">
+      <tr>
+        <th>Tecnología</th> <!-- Columna para el nombre de la tecnología -->
+        <th>Tipo</th>       <!-- Columna para el tipo -->
+      </tr>
+    </thead>
+
+    <tbody>
+      <!-- @for: recorre la lista de tecnologías -->
+      @for (tech of tecnologias; track tech.nombre) {
+        <tr [ngClass]="{
+              'table-primary': tech.tipo === 'Frontend',
+              'table-success': tech.tipo === 'Backend',
+              'table-warning': tech.tipo === 'Base de Datos'
+            }">
+          <!-- Imprime el nombre de la tecnología -->
+          <td>{{ tech.nombre }}</td>
+          <!-- Imprime el tipo de la tecnología -->
+          <td>{{ tech.tipo }}</td>
+        </tr>
+      }
+    </tbody>
+
+  </table>
+</div>
