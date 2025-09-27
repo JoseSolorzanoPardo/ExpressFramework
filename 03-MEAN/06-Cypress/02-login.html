@@ -1,0 +1,36 @@
+<div class="container d-flex justify-content-center align-items-center vh-100">
+  <div class="card shadow p-4" style="width: 22rem;">
+    
+    <h2 class="text-center mb-4">Iniciar Sesión</h2>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      
+      <!-- Campo Email -->
+      <div class="mb-3">
+        <label for="email" class="form-label">Correo electrónico</label>
+        <input id="email" type="email" formControlName="email" class="form-control" placeholder="Ingresa tu correo">
+        
+        <div class="text-danger mt-1" *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+          El correo es obligatorio y debe tener un formato válido.
+        </div>
+      </div>
+
+      <!-- Campo Password -->
+      <div class="mb-3">
+        <label for="password" class="form-label">Contraseña</label>
+        <input id="password" type="password" formControlName="password" class="form-control" placeholder="Ingresa tu contraseña">
+        
+        <div class="text-danger mt-1" *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+          La contraseña es obligatoria.
+        </div>
+      </div>
+
+      <!-- Botón de enviar -->
+      <button type="submit" class="btn btn-primary w-100" [disabled]="loginForm.invalid">
+        Entrar
+      </button>
+    </form>
+
+  </div>
+</div>
+
