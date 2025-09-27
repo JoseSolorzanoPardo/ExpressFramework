@@ -1,0 +1,196 @@
+<!-- Contenedor principal: centrado vertical con scroll si el contenido crece -->
+<div class="container min-vh-100 d-flex align-items-center py-4">
+  <div class="row justify-content-center w-100">
+    <div class="col-12 col-md-8 col-lg-6">
+      <div class="card shadow p-4">
+        <h2 class="text-center mb-4">Registro de Usuario</h2>
+
+        <form [formGroup]="registroForm" (ngSubmit)="onSubmit()" novalidate>
+
+          <!-- Nombre -->
+          <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre completo</label>
+            <input
+              id="nombre"
+              type="text"
+              class="form-control"
+              formControlName="nombre"
+              autocomplete="name"
+              [ngClass]="{
+                'is-invalid': registroForm.get('nombre')?.invalid && (registroForm.get('nombre')?.touched || registroForm.get('nombre')?.dirty),
+                'is-valid': registroForm.get('nombre')?.valid && (registroForm.get('nombre')?.touched || registroForm.get('nombre')?.dirty)
+              }"
+            />
+            <div class="invalid-feedback">
+              El nombre es obligatorio (mínimo 3 caracteres).
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="mb-3">
+            <label for="email" class="form-label">Correo electrónico</label>
+            <input
+              id="email"
+              type="email"
+              class="form-control"
+              formControlName="email"
+              autocomplete="email"
+              [ngClass]="{
+                'is-invalid': registroForm.get('email')?.invalid && (registroForm.get('email')?.touched || registroForm.get('email')?.dirty),
+                'is-valid': registroForm.get('email')?.valid && (registroForm.get('email')?.touched || registroForm.get('email')?.dirty)
+              }"
+            />
+            <div class="invalid-feedback">
+              Ingresa un correo válido.
+            </div>
+          </div>
+
+          <!-- Teléfono -->
+          <div class="mb-3">
+            <label for="telefono" class="form-label">Teléfono</label>
+            <input
+              id="telefono"
+              type="text"
+              class="form-control"
+              formControlName="telefono"
+              inputmode="numeric"
+              autocomplete="tel"
+              placeholder="3001234567"
+              [ngClass]="{
+                'is-invalid': registroForm.get('telefono')?.invalid && (registroForm.get('telefono')?.touched || registroForm.get('telefono')?.dirty),
+                'is-valid': registroForm.get('telefono')?.valid && (registroForm.get('telefono')?.touched || registroForm.get('telefono')?.dirty)
+              }"
+            />
+            <div class="invalid-feedback">
+              El teléfono debe tener 10 dígitos.
+            </div>
+          </div>
+
+          <!-- Fecha de nacimiento -->
+          <div class="mb-3">
+            <label for="fechaNacimiento" class="form-label">Fecha de nacimiento</label>
+            <input
+              id="fechaNacimiento"
+              type="date"
+              class="form-control"
+              formControlName="fechaNacimiento"
+              autocomplete="bday"
+              [ngClass]="{
+                'is-invalid': registroForm.get('fechaNacimiento')?.invalid && (registroForm.get('fechaNacimiento')?.touched || registroForm.get('fechaNacimiento')?.dirty),
+                'is-valid': registroForm.get('fechaNacimiento')?.valid && (registroForm.get('fechaNacimiento')?.touched || registroForm.get('fechaNacimiento')?.dirty)
+              }"
+            />
+            <div class="invalid-feedback">
+              La fecha de nacimiento es obligatoria.
+            </div>
+          </div>
+
+          <!-- Dirección -->
+          <div class="mb-3">
+            <label for="direccion" class="form-label">Dirección</label>
+            <input
+              id="direccion"
+              type="text"
+              class="form-control"
+              formControlName="direccion"
+              autocomplete="street-address"
+              [ngClass]="{
+                'is-invalid': registroForm.get('direccion')?.invalid && (registroForm.get('direccion')?.touched || registroForm.get('direccion')?.dirty),
+                'is-valid': registroForm.get('direccion')?.valid && (registroForm.get('direccion')?.touched || registroForm.get('direccion')?.dirty)
+              }"
+            />
+            <div class="invalid-feedback">
+              La dirección es obligatoria.
+            </div>
+          </div>
+
+          <!-- País -->
+          <div class="mb-3">
+            <label for="pais" class="form-label">País</label>
+            <select
+              id="pais"
+              class="form-select"
+              formControlName="pais"
+              [ngClass]="{
+                'is-invalid': registroForm.get('pais')?.invalid && (registroForm.get('pais')?.touched || registroForm.get('pais')?.dirty),
+                'is-valid': registroForm.get('pais')?.valid && (registroForm.get('pais')?.touched || registroForm.get('pais')?.dirty)
+              }"
+            >
+              <option value="">Seleccione un país</option>
+              <option value="colombia">Colombia</option>
+              <option value="mexico">México</option>
+              <option value="argentina">Argentina</option>
+              <option value="espana">España</option>
+            </select>
+            <div class="invalid-feedback">
+              Seleccione un país.
+            </div>
+          </div>
+
+          <!-- Contraseña -->
+          <div class="mb-3">
+            <label for="password" class="form-label">Contraseña</label>
+            <input
+              id="password"
+              type="password"
+              class="form-control"
+              formControlName="password"
+              autocomplete="new-password"
+              [ngClass]="{
+                'is-invalid': registroForm.get('password')?.invalid && (registroForm.get('password')?.touched || registroForm.get('password')?.dirty),
+                'is-valid': registroForm.get('password')?.valid && (registroForm.get('password')?.touched || registroForm.get('password')?.dirty)
+              }"
+            />
+            <div class="invalid-feedback">
+              La contraseña debe tener mínimo 6 caracteres.
+            </div>
+          </div>
+
+          <!-- Confirmar contraseña -->
+          <div class="mb-3">
+            <label for="confirmarPassword" class="form-label">Confirmar contraseña</label>
+            <input
+              id="confirmarPassword"
+              type="password"
+              class="form-control"
+              formControlName="confirmarPassword"
+              autocomplete="new-password"
+              [ngClass]="{
+                'is-invalid': (registroForm.hasError('notSame') && (registroForm.get('confirmarPassword')?.touched || registroForm.get('confirmarPassword')?.dirty)),
+                'is-valid': !registroForm.hasError('notSame') && registroForm.get('confirmarPassword')?.valid && (registroForm.get('confirmarPassword')?.touched || registroForm.get('confirmarPassword')?.dirty)
+              }"
+            />
+            <div class="invalid-feedback">
+              Las contraseñas no coinciden.
+            </div>
+          </div>
+
+          <!-- Términos -->
+          <div class="form-check mb-3">
+            <input
+              id="terminos"
+              type="checkbox"
+              class="form-check-input"
+              formControlName="terminos"
+              [ngClass]="{
+                'is-invalid': registroForm.get('terminos')?.invalid && (registroForm.get('terminos')?.touched || registroForm.get('terminos')?.dirty),
+                'is-valid': registroForm.get('terminos')?.valid && (registroForm.get('terminos')?.touched || registroForm.get('terminos')?.dirty)
+              }"
+            />
+            <label for="terminos" class="form-check-label">Acepto los términos y condiciones</label>
+            <div class="invalid-feedback d-block">
+              Debes aceptar los términos.
+            </div>
+          </div>
+
+          <!-- Botón -->
+          <button type="submit" class="btn btn-success w-100" [disabled]="registroForm.invalid">
+            Registrarse
+          </button>
+
+    
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
