@@ -23,7 +23,7 @@ import { CommonModule } from '@angular/common';
 })
 export class App {
   // Variable protegida accesible desde el HTML del mismo componente
-  protected title = '02-starter';
+  public title = '02-starter';
 
   // Mensaje público que puede mostrarse directamente en el template
   public mensaje = 'Bienvenido a tu primera app Angular';
