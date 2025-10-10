@@ -33,5 +33,30 @@
 <!-- Botón que decrementa el contador al hacer clic -->
 <button (click)="decrementar()">-</button>
 
+
+<ul>
+  @for (tecnologia of tecnologias; track tecnologia) {
+    <li>{{ tecnologia }}</li>
+  }
+</ul>
+
+<!-- 
+
+<ul>
+  @for (tecnologia of tecnologias; track tecnologia) {
+    <li>{{ tecnologia }}</li>
+  }
+</ul>
+
+<h2>Otras Tecnologías</h2>
+<ul>
+  @for (tecnologia of tecnologias2; track tecnologia.nombre) {
+    <li>{{ tecnologia.nombre }} - {{ tecnologia.version }}</li>
+  }
+</ul>
+───────────────────────────────────────────────────────────────
+-->
+
+
 <!-- Placeholder para cargar componentes según la ruta actual del navegador -->
 <router-outlet />
